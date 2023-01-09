@@ -1,0 +1,41 @@
+body{
+    background-color: rgb(216, 192, 161);
+}
+
+input:focus::placeholder {
+    color: transparent;
+  }
+
+#PoemTitleInput {
+    margin: 10px;
+    width: 300px;
+    height: 50px;
+    font-size: 20px;
+    border: hidden;
+    background: transparent;
+    outline: transparent;
+    text-align: center;
+}
+
+#PoemTextInput {
+    max-width: 800px;
+    min-width: 300px;
+    min-height: 500px;
+    font-size: 18px;
+    background-color: rgb(253, 237, 218);
+    border: hidden;
+    outline-color: rgb(168, 136, 96);
+    line-height: 30px;
+    text-align: center;
+}
+
+.poem-container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding: 50px;
+}
+
+.poem-container-item {
+
+}
