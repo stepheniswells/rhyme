@@ -15,17 +15,13 @@ require("dotenv").config({ path: "./config.env" });
 
 const port = process.env.PORT || 5000;
 app.use('/api/poems', require('./routes/poemRoutes.js'))
+app.use('/api/users', require('./routes/userRoutes.js'))
 const {errorHandler} = require('./middleware/errorMiddleware')
 app.use(errorHandler)
 
 //DB stuff
-const dbo = require("./db/conn");
+const {connectDB} = require('./db/db');
 
-app.listen(port, () => {
-  // perform a database connection when server starts
-  dbo.connectToServer(function (err) {
-    if (err) console.error(err);
- 
-  });
-  console.log(`Server is running on port: ${port}`);
-});
+connectDB()
+
+app.listen(port, () => console.log(`Server started on port ${port}`))
