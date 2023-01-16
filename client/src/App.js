@@ -1,13 +1,10 @@
-import Poem from './Poem'
-import SavedPoems from './SavedPoems'
+import Main from './Main'
 import React from 'react';
 
 const App = () => {
   return (
     <div>
-      <Navbar/>
-      <Poem/>
-      <SavedPoems/>
+      <Main /> 
     </div>
   )
 }

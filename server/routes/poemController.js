@@ -4,8 +4,15 @@ const { default: mongoose } = require('mongoose')
 const Poem = require('../schemas/poemSchema')
 const User = require('../schemas/userSchema')
 
+/* this was getting poems for a specific user
 const getPoems = asyncHandler(async(req, res) => {
     const  poems = await Poem.find({ user: req.user.id})
+    res.status(200).json(poems)
+})
+*/
+
+const getPoems = asyncHandler(async(req, res) => {
+    const poems = await Poem.find()
     res.status(200).json(poems)
 })
 
@@ -17,7 +24,7 @@ const setPoem = asyncHandler(async(req, res) => { //post
     const poem = await Poem.create({
         title: req.body.title,
         content: req.body.content,
-        user: req.body.id
+        user: req.user.id
     })
     res.status(200).json({message: `Set poems`})
 })
