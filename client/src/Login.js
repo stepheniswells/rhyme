@@ -1,7 +1,7 @@
 import {useState, useEffect } from 'react'
 import axios from 'axios'
 
-const Login = () => {
+const Login = (props) => {
     const [userInfo, setUserInfo] = useState({
         email: '',
         password: '',
@@ -23,6 +23,8 @@ const Login = () => {
       .then(response => {
           console.log('Logged in successfully')
           localStorage.setItem("jwt", response.data.token)
+          localStorage.setItem("username", response.data.name)
+          props.setUserLogin(true)
       })
     }
 
@@ -30,7 +32,7 @@ const Login = () => {
       <div>
         <form onSubmit={loginUser}>
             <input type="text" value={email} placeholder='Email' onChange={onChange} name='email'/>
-            <input type="text" value={password} placeholder='Password' onChange={onChange} name='password'/>
+            <input type="password" value={password} placeholder='Password' onChange={onChange} name='password'/>
             <button type='submit'>Login</button>
         </form>
       </div>

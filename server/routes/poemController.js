@@ -21,14 +21,31 @@ const setPoem = asyncHandler(async(req, res) => { //post
         res.status(400)
         throw new Error('Missing necessary fields')
     }
+    const user = await User.findById(req.user.id)
+
     const poem = await Poem.create({
         title: req.body.title,
         content: req.body.content,
-        user: req.user.id
+        user: req.user.id,
+        username: user.name
     })
     res.status(200).json({message: `Set poems`})
 })
 
+const addComment = asyncHandler(async(req, res) => {
+    const user = await User.findById(req.user.id)
+    if(!user){
+        res.status(401)
+        throw new Error('User not found')
+    }
+
+    const updatedPoem = await Poem.findByIdAndUpdate(req.params.id, {$push: 
+        {"comments": 
+            {content: req.body.comment, 
+                user: req.user.id}
+        }}, {new: true})
+    res.status(200).json(updatedPoem)
+})
 
 const updatePoem = asyncHandler(async(req, res) => {
     if(!mongoose.Types.ObjectId.isValid(req.params.id)){
@@ -74,5 +91,5 @@ const deletePoem = asyncHandler(async(req, res) => {
 })
 
 module.exports = {
-    getPoems, setPoem, updatePoem, deletePoem
+    getPoems, setPoem, updatePoem, deletePoem, addComment
 }

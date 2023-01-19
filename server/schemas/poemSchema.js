@@ -11,7 +11,15 @@ const poemSchema = mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         required: true,
         ref: 'User'
-    }
+    },
+    username: {
+        type: String
+    },
+    comments: [{
+        content: String,
+        user: mongoose.Schema.Types.ObjectId,
+        date: {type: Date, default: Date.now},
+    }]
 }, {
     timestamps: true
 })

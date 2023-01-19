@@ -11,6 +11,8 @@ input:focus::placeholder {
     color: transparent;
   }
 
+/* CREATE */
+
 #PoemTitleInput {
     margin: 10px;
     width: 300px;
@@ -41,6 +43,7 @@ input:focus::placeholder {
     padding: 50px;
 }
 
+/* NAVBAR */
 .navbar{
     height: 30px;
     margin: 0;
@@ -60,4 +63,50 @@ input:focus::placeholder {
     color: rgb(255, 255, 255); 
 }
 
-/* { border: 1px solid black; } */
+/* EXPLORE */
+.poem-feed{
+    display: flex;
+    justify-content: center;
+    background-color: rgb(212, 115, 115);
+}
+
+#poem-feed-item {
+    background-color: rgb(240, 230, 176);
+    border: 1px solid red;
+}
+
+#poem-feed-user {
+    font-weight: 700;
+    margin: 5px;
+    background-color: rgb(240, 230, 176);
+}
+
+#poem-feed-title {
+    text-align: center;
+    font-weight: 530;
+    font-style: italic;
+    font-size: medium;
+    color:rgb(83, 83, 82);
+    margin: 5px;
+    background-color: rgb(240, 230, 176);
+}
+
+#poem-feed-date {
+    margin: 5px;
+    font-size: smaller;
+}
+
+#poem-feed-content {
+    min-width: 400px;
+    margin: 5px;
+    padding: 10px;
+    white-space:pre-wrap;
+    background-color: rgb(226, 197, 152);
+}
+
+#poem-feed-comments {
+
+}
+
+
+ /* *{ border: 1px solid black; } */
